@@ -1,11 +1,11 @@
 public class Spielfeld {
 
-    private int[][] feld = new int[6][7];
+    private char[][] feld = new char[6][7];
 
     public void initialisieren() {
         for (int zeile = 0; zeile < 6; zeile++) {
             for (int spalte = 0; spalte < 7; spalte++) {
-                feld[zeile][spalte] = 0;
+                feld[zeile][spalte] = ' ';
             }
         }
     }
@@ -13,19 +13,21 @@ public class Spielfeld {
     public void anzeigen() {
         for (int zeile = 0; zeile < 6; zeile++) {
             for (int spalte = 0; spalte < 7; spalte++) {
-                System.out.print(feld[zeile][spalte] + " ");
+                System.out.print("|" + feld[zeile][spalte]);
             }
-            System.out.println();
+            System.out.println("|");
         }
+        System.out.println(" 1 2 3 4 5 6 7");
     }
 
-    public boolean einwerfen(int spalte, int spieler) {
-        if (spalte < 0 || spalte > 6) {
+    public boolean einwerfen(int spalte, char zeichen) {
+        if (spalte < 1 || spalte > 7) {
             return false;
         }
+        int index = spalte - 1;
         for (int zeile = 5; zeile >= 0; zeile--) {
-            if (feld[zeile][spalte] == 0) {
-                feld[zeile][spalte] = spieler;
+            if (feld[zeile][index] == ' ') {
+                feld[zeile][index] = zeichen;
                 return true;
             }
         }
@@ -35,32 +37,32 @@ public class Spielfeld {
     public boolean gewinncheck() {
         for (int zeile = 0; zeile < 6; zeile++) {
             for (int spalte = 0; spalte < 7; spalte++) {
-                int spieler = feld[zeile][spalte];
-                if (spieler == 0) {
+                char zeichen = feld[zeile][spalte];
+                if (zeichen == ' ') {
                     continue;
                 }
                 if (spalte + 3 < 7
-                        && feld[zeile][spalte + 1] == spieler
-                        && feld[zeile][spalte + 2] == spieler
-                        && feld[zeile][spalte + 3] == spieler) {
+                        && feld[zeile][spalte + 1] == zeichen
+                        && feld[zeile][spalte + 2] == zeichen
+                        && feld[zeile][spalte + 3] == zeichen) {
                     return true;
                 }
                 if (zeile + 3 < 6
-                        && feld[zeile + 1][spalte] == spieler
-                        && feld[zeile + 2][spalte] == spieler
-                        && feld[zeile + 3][spalte] == spieler) {
+                        && feld[zeile + 1][spalte] == zeichen
+                        && feld[zeile + 2][spalte] == zeichen
+                        && feld[zeile + 3][spalte] == zeichen) {
                     return true;
                 }
                 if (zeile + 3 < 6 && spalte + 3 < 7
-                        && feld[zeile + 1][spalte + 1] == spieler
-                        && feld[zeile + 2][spalte + 2] == spieler
-                        && feld[zeile + 3][spalte + 3] == spieler) {
+                        && feld[zeile + 1][spalte + 1] == zeichen
+                        && feld[zeile + 2][spalte + 2] == zeichen
+                        && feld[zeile + 3][spalte + 3] == zeichen) {
                     return true;
                 }
                 if (zeile + 3 < 6 && spalte - 3 >= 0
-                        && feld[zeile + 1][spalte - 1] == spieler
-                        && feld[zeile + 2][spalte - 2] == spieler
-                        && feld[zeile + 3][spalte - 3] == spieler) {
+                        && feld[zeile + 1][spalte - 1] == zeichen
+                        && feld[zeile + 2][spalte - 2] == zeichen
+                        && feld[zeile + 3][spalte - 3] == zeichen) {
                     return true;
                 }
             }
@@ -71,7 +73,7 @@ public class Spielfeld {
     public boolean istvoll() {
         for (int zeile = 0; zeile < 6; zeile++) {
             for (int spalte = 0; spalte < 7; spalte++) {
-                if (feld[zeile][spalte] == 0) {
+                if (feld[zeile][spalte] == ' ') {
                     return false;
                 }
             }

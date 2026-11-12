@@ -11,8 +11,8 @@ public class Spiel {
     private ArrayList<Integer> zugliste;
 
     public void startespiel() {
-        spieler1 = new Spieler(1);
-        spieler2 = new Spieler(2);
+        spieler1 = new Spieler(1, 'X');
+        spieler2 = new Spieler(2, 'O');
         aktuellerspieler = spieler1;
         spielfeld = new Spielfeld();
         spielfeld.initialisieren();
@@ -26,7 +26,7 @@ public class Spiel {
         if (spielbeendet) {
             return;
         }
-        if (!spielfeld.einwerfen(spalte, aktuellerspieler.getSpielernr())) {
+        if (!spielfeld.einwerfen(spalte, aktuellerspieler.getZeichen())) {
             System.out.println("Spalte " + spalte + " ist voll oder ungültig.");
             return;
         }
@@ -56,6 +56,7 @@ public class Spiel {
     }
 
     public void gibGewinner() {
-        System.out.println("Spieler " + aktuellerspieler.getSpielernr() + " gewinnt.");
+        System.out.println("Spieler " + aktuellerspieler.getSpielernr()
+                + " (" + aktuellerspieler.getZeichen() + ") gewinnt.");
     }
 }

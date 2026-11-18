@@ -31,11 +31,9 @@ public class Spielfeld {
         if (spalte < 1) return false;
         if (spalte > SPALTEN) return false;
 
-        int index = spalte - 1;
-
         for (int zeile = ZEILEN - 1; zeile >= 0; zeile--) {
-            if (feld[zeile][index] == ' ') {
-                feld[zeile][index] = zeichen;
+            if (feld[zeile][spalte - 1] == ' ') {
+                feld[zeile][spalte - 1] = zeichen;
                 return true;
             }
         }

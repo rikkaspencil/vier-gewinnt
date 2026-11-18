@@ -1,11 +1,9 @@
 public class Spieler {
 
     private int spielernr;
-    private char zeichen;
 
-    public Spieler(int spielernr, char zeichen) {
+    public Spieler(int spielernr) {
         this.spielernr = spielernr;
-        this.zeichen = zeichen;
     }
 
     public int getSpielernr() {
@@ -13,6 +11,6 @@ public class Spieler {
     }
 
     public char getZeichen() {
-        return zeichen;
+        return spielernr == 1 ? 'X' : 'O';
     }
 }

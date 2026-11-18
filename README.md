@@ -19,3 +19,7 @@ ein Unentschieden.
 - `Spiel.java` regelt die Runden und die Eingabe.
 - `Spielfeld.java` ist das 6x7-Feld und prüft den Gewinn.
 - `Spieler.java` ist ein Spieler mit Nummer und Zeichen.
+
+## Aufgabe
+
+Die Vorgabe (Spielregeln und Klassendiagramm) steht in [AUFGABE.md](AUFGABE.md).
